@@ -1,0 +1,49 @@
+<h1>Restaurants#show</h1>
+<p>Find me in app/views/restaurants/show.html.erb</p>
+
+<div class="container">
+  <article>
+    <h1>
+      <%= @restaurant.name %>
+
+      <small>
+        <%= link_to "#{@restaurant.id}/edit", :method => :get, :title => "Update  #{@restaurant.name}" do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+      </small>
+      <small>
+
+        <%= link_to @restaurant, :method => :delete, :title => "Delete #{@restaurant.name}", data: { :confirm => "You sure?", disable_with: "Processing ..." } do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+
+      </small>
+      <small>
+
+        <%= link_to "/restaurants/#{@restaurant.id}/reviews/new", :method => :get, :title => "Review  #{@restaurant.name}" do %>
+          <i class="fas fa-check-double"></i>
+        <% end %>
+
+      </small>
+
+    </h1>
+    <hr>
+    <table>
+      <tr> <td>Address:      </td><td><%= @restaurant.address %></td></tr>
+      <tr> <td>Phone number: </td><td><%= @restaurant.phone_number %></td></tr>
+      <tr> <td>Category:     </td><td><%= @restaurant.category %></td></tr>
+    </table>
+    <br>
+    <h2>Reviews</h2>
+    <ul>
+        <%= @reviews.each do |item| %>
+            <li><%= item.rating %> <%= item.content %></li>
+        <% end %>
+    </ul>
+
+  </article>
+
+  <hr>
+  <br>
+  <%= link_to 'Back to list', '/restaurants' %>
+</div>

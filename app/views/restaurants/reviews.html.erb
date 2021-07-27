@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Review an existing restaurant</h1>
+  <div class="blockquote">
+    <%= @restaurant.name %><br>
+    <%= @restaurant.address %><br>
+  </div>
+
+  <%= form_for(@review) do |f| %>
+    <%= f.label :rating %><br>
+    <%= f.text_field :rating, class: 'form-control' %><br>
+
+    <%= f.label :content %><br>
+    <%= f.text_field :content, class: 'form-control' %><br>
+
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+
+  <hr>
+  <br><br>
+  <%= link_to 'Back to list', '/restaurants' %>
+</div>
